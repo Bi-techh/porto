@@ -5,7 +5,7 @@ import_map = "./src/import_map.json"
 
 [[redirects]]
   from = "/*"
-  to = "/.netlify/functions/entry-server"
+  to = "/.netlify/functions/entry"
   status = 200
 
 [build]
@@ -23,6 +23,7 @@ import_map = "./src/import_map.json"
   directory = "netlify/functions"
   node_bundler = "esbuild"
   included_files = ["dist/**/*"]
+  external_node_modules = ["sharp"]
 
 [dev]
   command = "npm run dev"

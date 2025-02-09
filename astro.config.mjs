@@ -7,7 +7,9 @@ export default defineConfig({
     output: 'server',
     adapter: netlify({
         imageCDN: true,
-        edgeMiddleware: true
+        edgeMiddleware: true,
+        binaryMediaTypes: ['image/*', 'font/*'],
+        split: true
     }),
     integrations: [
         prefetch({
@@ -25,6 +27,13 @@ export default defineConfig({
             studioUrl: '/studio'
         })
     ],
+    image: {
+        service: {
+            entrypoint: 'astro/assets/services/sharp'
+        },
+        domains: ['cdn.sanity.io'],
+        remotePatterns: [{ protocol: 'https' }]
+    },
     build: {
         assets: 'assets',
         inlineStylesheets: 'auto'

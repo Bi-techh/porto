@@ -10,7 +10,8 @@
     "studio:dev": "cd studio && npm run dev",
     "studio:build": "cd studio && npm run build",
     "studio:deploy": "cd studio && npm run deploy",
-    "dev:all": "concurrently \"npm run dev\" \"npm run studio:dev\""
+    "dev:all": "concurrently \"npm run dev\" \"npm run studio:dev\"",
+    "postinstall": "cd studio && npm install"
   },
   "dependencies": {
     "@astrojs/netlify": "^6.1.0",
@@ -21,9 +22,13 @@
     "@sanity/overlays": "^2.3.59",
     "@sanity/visual-editing": "^2.13.0",
     "astro": "^5.2.5",
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "sharp": "^0.33.2"
   },
   "devDependencies": {
     "@sanity/types": "^3.74.1"
+  },
+  "engines": {
+    "node": ">=20.11.0"
   }
 }

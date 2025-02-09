@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "@sanity/client": "https://esm.sh/@sanity/client@6.12.3",
+    "@sanity/image-url": "https://esm.sh/@sanity/image-url@1.0.2",
+    "@sanity/overlays": "https://esm.sh/@sanity/overlays@2.3.59",
+    "@sanity/visual-editing": "https://esm.sh/@sanity/visual-editing@2.13.0"
+  }
+}
