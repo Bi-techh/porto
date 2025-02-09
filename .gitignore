@@ -35,3 +35,8 @@ dist/
 # Sanity
 /studio/dist/
 .sanity
+
+# Git
+.git/
+**/.git/
+.gitmodules
