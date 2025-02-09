@@ -23,6 +23,12 @@ export default defineConfig({
       },
       resolve: {
         mainDocuments: (documents) => documents.filter(doc => doc._type === 'post' || doc._type === 'project')
+      },
+      preview: {
+        gemini: {
+          enabled: true,
+          framerate: 30
+        }
       }
     })
   ],
@@ -30,4 +36,4 @@ export default defineConfig({
   schema: {
     types: schemaTypes
   }
-}) 
+})
