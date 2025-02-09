@@ -1,0 +1,27 @@
+
+.animate-on-load {
+    opacity: 1 !important;
+    transform: none !important;
+    -webkit-transform: none !important;
+    -moz-transform: none !important;
+    -ms-transform: none !important;
+}
+
+.experience-block {
+    opacity: 1;
+    transform: none;
+    transition: all 0.5s ease;
+}
+
+.flex-vertical_left_top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.experience-grid {
+    opacity: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}

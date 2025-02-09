@@ -1,0 +1,28 @@
+import { client } from '../lib/sanity';
+
+const { documentId } = Astro.params;
+
+// Fetch the document
+const doc = await client.getDocument(documentId);
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://esm.sh/@sanity/visual-editing@latest"></script>
+  </head>
+  <body>
+    <!-- Your actual content rendering here -->
+    <div data-sanity-edit-id={documentId}>
+      <!-- Render your document content -->
+      {doc && <h1>{doc.title}</h1>}
+    </div>
+
+    <script>
+      window.enableVisualEditing({
+        studioUrl: '/studio',
+        projectId: 'qpes3s7p',
+        dataset: 'production'
+      })
+    </script>
+  </body>
+</html> 
