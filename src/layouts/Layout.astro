@@ -1,0 +1,85 @@
+---
+// src/layouts/Layout.astro
+import { createClient } from '@sanity/client'
+
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+
+// Get environment variables
+const projectId = import.meta.env.PUBLIC_SANITY_PROJECT_ID;
+const dataset = import.meta.env.PUBLIC_SANITY_DATASET;
+
+// Create a client with your project's credentials
+const client = createClient({
+  projectId,
+  dataset,
+  apiVersion: '2024-03-01',
+  useCdn: true,
+  perspective: 'published'
+})
+---
+
+<html lang="en" data-sanity>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="/css/webflow-style.css" />
+        <link rel="stylesheet" href="/css/animation-fixes.css" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+        
+        <!-- Font loading -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap" rel="stylesheet">
+
+        <slot name="head" />
+
+        <!-- Visual Editing Styles -->
+        <style is:global>
+          [data-sanity] {
+            outline: 1px solid rgba(0, 0, 0, 0.1);
+          }
+          [data-sanity]:hover {
+            outline: 1px solid #00e;
+          }
+        </style>
+    </head>
+    <body class="body">
+        <slot />
+        
+        <!-- Scripts -->
+        <script is:inline src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script is:inline src="/scripts/init.js"></script>
+        <script is:inline src="/js/webflow.59a188e2.1ce79b971debf99d.js"></script>
+        <script is:inline src="/scripts/webflow-animations.js"></script>
+        <script is:inline src="/scripts/form-handler.js"></script>
+        
+        <script is:inline>
+            // Load visual editing script
+            (function() {
+                const script = document.createElement('script');
+                script.src = 'https://esm.sh/@sanity/visual-editing@2.13.0';
+                script.type = 'module';
+                script.onload = () => {
+                    window.enableVisualEditing({
+                        studioUrl: '/studio',
+                        projectId: 'qpes3s7p',
+                        dataset: 'production',
+                        tool: 'presentation',
+                        allowBackgroundUpdates: true,
+                        overlay: {
+                            enabled: true,
+                            perspective: 'previewDrafts'
+                        }
+                    });
+                };
+                document.body.appendChild(script);
+            })();
+        </script>
+    </body>
+</html>
