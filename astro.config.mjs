@@ -23,7 +23,8 @@ export default defineConfig({
             dataset: 'production',
             apiVersion: '2024-03-01',
             useCdn: true,
-            studioUrl: '/studio'
+            studioBasePath: '/studio',
+            perspective: 'published'
         })
     ],
     image: {

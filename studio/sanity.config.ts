@@ -9,6 +9,7 @@ export default defineConfig({
   title: 'Portfolio Admin',
   projectId: 'qpes3s7p',
   dataset: 'production',
+  basePath: '/studio',
   
   plugins: [
     deskTool(),
