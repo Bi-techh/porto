@@ -16,7 +16,7 @@ path = "/*"
   PUBLIC_SANITY_PROJECT_ID = "qpes3s7p"
   PUBLIC_SANITY_DATASET = "production"
   PUBLIC_SANITY_API_VERSION = "2024-03-01"
-  ESBUILD_VERSION = "0.21.5"
+  ESBUILD_VERSION = "0.24.2"
 
 [functions]
   node_bundler = "esbuild"
