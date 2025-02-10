@@ -4,35 +4,37 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "npm run studio:build && astro build",
+    "build": "npm ci --legacy-peer-deps && npm run studio:build && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "studio:dev": "cd studio && npm run dev",
-    "studio:build": "cd studio && npm run build",
+    "studio:build": "cd studio && npm ci && npm run build",
     "studio:deploy": "cd studio && npm run deploy",
     "dev:all": "concurrently \"npm run dev\" \"npm run studio:dev\"",
     "postinstall": "cd studio && npm install"
   },
   "dependencies": {
-    "@astrojs/netlify": "^6.1.0",
-    "@astrojs/prefetch": "^0.4.1",
-    "@sanity/astro": "^3.1.11",
-    "@sanity/client": "^6.12.3",
-    "@sanity/image-url": "^1.0.2",
-    "@sanity/overlays": "^2.3.59",
-    "@sanity/visual-editing": "^2.13.0",
-    "astro": "^5.2.5",
-    "concurrently": "^8.2.2",
-    "sharp": "^0.33.2"
+    "@astrojs/netlify": "6.1.0",
+    "@astrojs/prefetch": "0.4.1",
+    "@sanity/astro": "3.1.11",
+    "@sanity/client": "6.12.3",
+    "@sanity/image-url": "1.0.2",
+    "@sanity/overlays": "2.3.59",
+    "@sanity/visual-editing": "2.13.0",
+    "astro": "5.2.5",
+    "concurrently": "8.2.2",
+    "sharp": "0.33.2"
   },
   "devDependencies": {
-    "@sanity/types": "^3.74.1",
+    "@sanity/types": "3.74.1",
     "esbuild": "0.24.2"
   },
   "engines": {
-    "node": ">=20.11.0"
+    "node": "20.11.0",
+    "npm": "10.2.4"
   },
-  "overrides": {
-    "esbuild": "0.24.2"
+  "resolutions": {
+    "esbuild": "0.24.2",
+    "@sanity/client": "6.12.3"
   }
 }
