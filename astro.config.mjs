@@ -7,13 +7,12 @@ export default defineConfig({
     output: 'server',
     adapter: netlify({
         imageCDN: true,
-        edgeMiddleware: true,
+        edgeMiddleware: false, // Disabling edge middleware to prevent parsing issues
         binaryMediaTypes: ['image/*', 'font/*'],
-        split: true
+        functionPerRoute: false, // Simplifying the function structure
     }),
     integrations: [
         prefetch({
-            // Prefetch options to handle poor network conditions
             throttle: 1,
             timeout: 10000,
             retryDelay: 5000,
@@ -38,11 +37,9 @@ export default defineConfig({
         assets: 'assets',
         inlineStylesheets: 'auto'
     },
-    server: {
-        cors: true,
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS'
+    vite: {
+        ssr: {
+            noExternal: ['@sanity/image-url', '@sanity/client']
         }
     }
 });
